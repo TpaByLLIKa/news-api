@@ -19,4 +19,13 @@ public class News implements Serializable {
     private Date date;
 
     private String link;
+
+    private Long views;
+
+    private Long likes;
+
+    public void setParams(NewsParams newsParams) {
+        views = newsParams.getViews();
+        likes = newsParams.getLikes();
+    }
 }
