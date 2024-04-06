@@ -10,6 +10,7 @@ import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.format.datetime.DateFormatter;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -131,7 +132,10 @@ public class NewsParser {
             }
 
             Element img = newsEl.getElementsByClass("wp-post-image").get(0).child(0);
-            news.setImageSrc(img.attr("abs:src"));
+            String[] srcset = img.attr("srcset").split(", ");
+            String srcFromSet = srcset[srcset.length - 1].split(" ")[0];
+            String imgSrc = StringUtils.hasText(srcFromSet) && srcFromSet.startsWith("http") ? srcFromSet : img.attr("abs:src");
+            news.setImageSrc(imgSrc);
 
             newsList.add(news);
         }
