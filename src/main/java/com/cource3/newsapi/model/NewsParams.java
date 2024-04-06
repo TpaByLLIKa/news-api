@@ -24,6 +24,7 @@ public class NewsParams {
 
         views = news.getViews() != null ? news.getViews() : 0L;
         likes = news.getLikes() != null ? news.getLikes() : 0L;
+        dislikes = news.getDislikes() != null ? news.getDislikes() : 0L;
     }
 
     @Id
@@ -35,4 +36,7 @@ public class NewsParams {
 
     @Column(name = "likes")
     private Long likes;
+
+    @Column(name = "dislikes")
+    private Long dislikes;
 }

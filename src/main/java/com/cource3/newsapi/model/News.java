@@ -24,8 +24,11 @@ public class News implements Serializable {
 
     private Long likes;
 
+    private Long dislikes;
+
     public void setParams(NewsParams newsParams) {
         views = newsParams.getViews();
         likes = newsParams.getLikes();
+        dislikes = newsParams.getDislikes();
     }
 }
